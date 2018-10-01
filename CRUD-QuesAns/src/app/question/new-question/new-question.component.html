@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>New Question</h2>
+
+  <div>
+
+    <div class="form-group">
+      <textarea class="form-control" rows="4" [(ngModel)]="newQuestionText"></textarea>
+    </div>
+    <div>
+      <button class="btn btn-primary" (click)="save()">Add</button>
+      <button class="btn" (click)="cancel()">Cancel</button>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,30 @@
+
+<div class="container">
+  <p> <a routerLink="/categories">Categories</a> >>
+    <a routerLink="/categories/{{categoryTitle | lowercase}}">
+      {{categoryTitle | capitalize}}
+    </a> >> {{questionText}} </p>
+
+  <h3>{{question}}</h3>
+  <button class="btn btn-primary"
+    (click)="openDialog()">New Answer</button>
+  <div class="answer-section">
+    <div class="well" *ngFor="let answer of answers; let i=index">
+        <p class="text">{{answer.text}}</p>
+        <p class="status-bar">
+          <img (click)="incLikes(answer._id)" src="../../assets/like.png"
+               title="Like"> {{answer.likes}}&nbsp;&nbsp;&nbsp;
+          <img (click)="incDislikes(answer._id)" class="dislike"
+               src="../../assets/dislike.png" title="Dislike"> {{answer.dislikes}}&nbsp;&nbsp;&nbsp;
+          <img (click)="openConfirmPrompt(answer._id)" src="../../assets/delete.png"
+               title="Delete">&nbsp;&nbsp;&nbsp;
+          <img (click)="openEditDialog(answer.text, answer._id)" src="../../assets/edit.png"
+               title="Edit">
+        </p>
+        <hr>
+    </div>
+  </div>
+
+  <button class="btn btn-primary"
+    (click)="goBack()">Back</button>
+</div>

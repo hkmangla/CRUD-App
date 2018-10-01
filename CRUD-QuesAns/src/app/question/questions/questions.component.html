@@ -1,0 +1,31 @@
+<div class="container">
+  <p><a class="prev-link" routerLink="/categories">Categories</a> >>
+    {{categoryTitle | capitalize}}</p>
+
+  <h3>Learn About: {{categoryTitle | capitalize}}</h3>
+  <button class="btn btn-primary"
+    (click)="openDialog()">New Question</button>
+  <div class="message" *ngIf="!questions">
+    Category doesn't contain any question!
+  </div>
+  <div class="question-section">
+    <div *ngFor="let question of questions; let i=index">
+      <div class="well">
+        <a routerLink="questions/{{question._id}}">
+          <p class="description">{{question.description}}</p>
+        </a>
+        <p class="status-bar">
+          <img (click)="incLikes(question._id)" src="../../assets/like.png"
+               title="Like"> {{question.likes}}&nbsp;&nbsp;&nbsp;
+          <img (click)="incDislikes(question._id)" class="dislike"
+               src="../../assets/dislike.png" title="Dislike"> {{question.dislikes}}&nbsp;&nbsp;&nbsp;
+          <img (click)="openPromptDialog(question._id)" src="../../assets/delete.png"
+               title="Delete">&nbsp;&nbsp;&nbsp; {{question.answersCount}} answers</p>
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary"
+    (click)="goBack()">Back</button>
+</div>

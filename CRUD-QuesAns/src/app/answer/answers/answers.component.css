@@ -1,0 +1,22 @@
+.status-bar img {
+  width: 1em;
+  height: 1em;
+  cursor: pointer;
+}
+
+.status-bar img:hover {
+  transform: scale(1.2, 1.2);
+}
+
+.status-bar {
+  height: 20px;
+  line-height: 20px;
+}
+.answer-section {
+  margin-top: 20px;
+}
+
+.container {
+  padding-top: 130px;
+  margin-bottom: 30px;
+}
