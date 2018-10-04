@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {CategoryModule} from './category/category.module';
 import {AnswerModule} from './answer/answer.module';
 import {QuestionModule} from './question/question.module';
+import {RegisterModule} from "./register/register.module";
 @NgModule({
   declarations: [
     AppComponent
@@ -15,7 +16,8 @@ import {QuestionModule} from './question/question.module';
     AppRoutingModule,
     CategoryModule,
     AnswerModule,
-    QuestionModule
+    QuestionModule,
+    RegisterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

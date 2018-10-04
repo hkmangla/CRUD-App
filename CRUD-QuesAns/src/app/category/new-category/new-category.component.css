@@ -24,8 +24,13 @@
 }
 
 .remove-tag {
-  color: #992222;
+  display: none;
+  color: darkred;
   margin-left: 5px;
   font-size: 12px;
   cursor: pointer;
+}
+
+.tags li:hover .remove-tag {
+  display: inline-block;
 }

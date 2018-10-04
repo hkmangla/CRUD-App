@@ -47,7 +47,9 @@ module.exports.getAllCategoryQuestionsById = (title, callback) => {
                                         "questions.answersCount": 1
                                         }, callback);
 };
-
+module.exports.deleteCategory = (title, callback) => {
+  CrudData.remove({title: title}, callback);
+};
 module.exports.getQuestionFieldsById = (title, questionId, callback) => {
     CrudData.findOne({$and: [
         {title: title},
@@ -65,6 +67,7 @@ module.exports.getAnswer = (title, questionId, answerId, callback) => {
       {_id: 0, 'questions.answers.text': 1}, callback
   );
 };
+
 
 module.exports.deleteQuestion = (title, questionId, callback) => {
     CrudData.findOneAndUpdate(

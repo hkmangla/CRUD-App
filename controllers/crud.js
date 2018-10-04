@@ -267,4 +267,18 @@ router.post('/', (req, res) => {
 
 });
 
+router.delete('/categories/:categoryTitle', (req, res) => {
+    const title = req.params.categoryTitle;
+    crudData.deleteCategory(title, (err, data) => {
+        if(err) {
+            res.json({success: false, message: `Fail to delete the category. Error: ${err}`});
+        } else if(data) {
+            res.json({success: true, data: data});
+            res.end();
+        } else {
+            res.json({success: false});
+        }
+    });
+});
+
 module.exports = router;

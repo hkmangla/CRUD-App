@@ -37,3 +37,14 @@ h3 {
   padding-top: 130px;
   margin-bottom: 30px;
 }
+
+.deleteIcon {
+  position: absolute;
+  right: 19px;
+  color: grey;
+  display: none;
+}
+
+.well:hover .deleteIcon {
+  display: block;
+}

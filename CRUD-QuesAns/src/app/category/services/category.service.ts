@@ -42,4 +42,11 @@ export class CategoryService {
     }
   }
 
+  deleteCategory(categoryTitle) {
+    const URI = `${this.serverApi}/cruddata/categories/${categoryTitle}`;
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.delete(URI, {headers: headers});
+  }
 }

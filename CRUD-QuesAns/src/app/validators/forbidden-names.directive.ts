@@ -3,7 +3,7 @@ import {AbstractControl, NG_VALIDATORS, Validator, ValidatorFn} from '@angular/f
 
 export function forbiddenValidatorFunction(names: string): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} | null => {
-      let value = '';
+      let value;
       if (control.value) {
         value = control.value.toLowerCase();
       }

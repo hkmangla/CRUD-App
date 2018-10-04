@@ -731,7 +731,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "img {\r\n  width: 127px;\r\n  height: 127px;\r\n  margin-left: 18px;\r\n  border-radius: 50%;\r\n}\r\nh3 {\r\n  color: dodgerblue;\r\n  margin-top: 0px;\r\n\r\n}\r\n.tags {\r\n  list-style: none;\r\n  padding: 0px;\r\n}\r\n.tags li {\r\n  display: inline-block;\r\n  background-color: rgb(210, 210, 210);\r\n  padding: 5px 10px;\r\n  margin-right: 10px;\r\n  margin-top: 10px;\r\n  border-radius: 15px;\r\n}\r\n.well {\r\n  cursor: pointer;\r\n}\r\n.well:hover {\r\n  -webkit-transform: scale(1.02, 1.02);\r\n          transform: scale(1.02, 1.02);\r\n  background-color: #dfdfdf;\r\n}\r\n.well:focus {\r\n  outline: none;\r\n}\r\n.container {\r\n  padding-top: 130px;\r\n  margin-bottom: 30px;\r\n}\r\n"
+module.exports = "img {\r\n  width: 127px;\r\n  height: 127px;\r\n  margin-left: 18px;\r\n  border-radius: 50%;\r\n}\r\nh3 {\r\n  color: dodgerblue;\r\n  margin-top: 0px;\r\n\r\n}\r\n.tags {\r\n  list-style: none;\r\n  padding: 0px;\r\n}\r\n.tags li {\r\n  display: inline-block;\r\n  background-color: rgb(210, 210, 210);\r\n  padding: 5px 10px;\r\n  margin-right: 10px;\r\n  margin-top: 10px;\r\n  border-radius: 15px;\r\n}\r\n.well {\r\n  cursor: pointer;\r\n}\r\n.well:hover {\r\n  -webkit-transform: scale(1.02, 1.02);\r\n          transform: scale(1.02, 1.02);\r\n  background-color: #dfdfdf;\r\n}\r\n.well:focus {\r\n  outline: none;\r\n}\r\n.container {\r\n  padding-top: 130px;\r\n  margin-bottom: 30px;\r\n}\r\n.deleteIcon {\r\n  position: absolute;\r\n  right: 19px;\r\n  color: grey;\r\n  display: none;\r\n}\r\n.well:hover .deleteIcon {\r\n  display: block;\r\n}\r\n"
 
 /***/ }),
 
@@ -742,7 +742,7 @@ module.exports = "img {\r\n  width: 127px;\r\n  height: 127px;\r\n  margin-left:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container\">\n\n  <p>Categories</p>\n\n  <div *ngFor=\"let category of categories\">\n\n    <div routerLink=\"{{category.title | lowercase}}\" class=\"well\">\n\n      <div class=\"row\">\n        <div class=\"col-sm-2\">\n          <img [src]=\"category.iconUrl\" [alt]=\"category.title\"\n               onerror=\"src='../../assets/default.png';\">\n        </div>\n\n        <div class=\"col-sm-10\">\n          <h3>{{category.title | capitalize}}</h3>\n          <p>{{category.description}}</p>\n          <ul class=\"tags\">\n            <li *ngFor=\"let tag of category.tags\">{{tag}}</li>\n          </ul>\n\n        </div>\n      </div>\n\n    </div>\n  </div>\n  <button class=\"btn btn-primary btn-block btn-lg\"\n            (click)=\"openDialog()\">ADD New Category</button>\n\n</div>\n"
+module.exports = "\n<div class=\"container\">\n\n  <p>Categories</p>\n\n  <div *ngFor=\"let category of categories\">\n\n    <div routerLink=\"{{category.title | lowercase}}\" class=\"well\">\n\n      <div class=\"row\">\n        <div class=\"col-sm-2\">\n          <img [src]=\"category.iconUrl\" [alt]=\"category.title\"\n               onerror=\"src='../../assets/default.png';\">\n        </div>\n\n        <div class=\"col-sm-10\">\n          <div class=\"deleteIcon\" (click)=\"openConfirmPrompt($event, category.title)\">&#x274C;</div>\n          <h3>{{category.title | capitalize}}</h3>\n          <p>{{category.description}}</p>\n          <ul class=\"tags\">\n            <li *ngFor=\"let tag of category.tags\">{{tag}}</li>\n          </ul>\n\n        </div>\n      </div>\n\n    </div>\n  </div>\n  <button class=\"btn btn-primary btn-block btn-lg\"\n            (click)=\"openDialog()\">ADD New Category</button>\n\n</div>\n"
 
 /***/ }),
 
@@ -760,6 +760,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _new_category_new_category_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../new-category/new-category.component */ "./src/app/category/new-category/new-category.component.ts");
 /* harmony import */ var _services_category_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/category.service */ "./src/app/category/services/category.service.ts");
+/* harmony import */ var _shared_confirm_prompt_confirm_prompt_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../shared/confirm-prompt/confirm-prompt.component */ "./src/app/shared/confirm-prompt/confirm-prompt.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -769,6 +770,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -796,6 +798,8 @@ var CategoriesComponent = /** @class */ (function () {
                 _this.categoryService.updateCategory(data).subscribe(function (response) {
                     console.log("Response: " + JSON.stringify(response));
                     _this.categories = _this.categories.concat(data);
+                    console.log('Title: ', data.title);
+                    _this.categoriesTitle.push(data.title);
                 }, function (err) { return console.log(err); });
             }
         });
@@ -812,6 +816,32 @@ var CategoriesComponent = /** @class */ (function () {
             console.log('Titles: ' + JSON.stringify(res));
             _this.categoriesTitle = res;
         });
+    };
+    CategoriesComponent.prototype.deleteCategory = function (data) {
+        var _this = this;
+        if (data.message === 'Yes') {
+            this.categoryService.deleteCategory(data.id).subscribe(function (response) {
+                if (response['success'] === true) {
+                    _this.categories = _this.categories.filter(function (obj) { return obj.title != data.id; });
+                }
+                else {
+                    console.log('Failed to delete category');
+                }
+            });
+        }
+    };
+    CategoriesComponent.prototype.openConfirmPrompt = function (event, title) {
+        var _this = this;
+        event.stopPropagation();
+        var dialogConfig = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogConfig"]();
+        dialogConfig.autoFocus = true;
+        dialogConfig.hasBackdrop = true;
+        dialogConfig.data = {
+            message: '',
+            id: title
+        };
+        var dialogRef = this.matDialog.open(_shared_confirm_prompt_confirm_prompt_component__WEBPACK_IMPORTED_MODULE_4__["ConfirmPromptComponent"], dialogConfig);
+        dialogRef.afterClosed().subscribe(function (data) { return _this.deleteCategory(data); });
     };
     CategoriesComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -950,7 +980,7 @@ var CategoryModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container {\r\n  width: 500px;\r\n}\r\n\r\n.tags {\r\n  list-style: none;\r\n  padding: 0px;\r\n}\r\n\r\n.tags li {\r\n  display: inline-block;\r\n  background-color: rgb(210, 210, 210);\r\n  padding: 5px 10px;\r\n  margin-right: 10px;\r\n  margin-top: 10px;\r\n  border-radius: 15px;\r\n}\r\n\r\n.ng-valid[required], .ng-valid.required  {\r\n  border-left: 5px solid green; /* green */\r\n}\r\n\r\n.ng-invalid:not(form)  {\r\n  border-left: 5px solid #a94442; /* red */\r\n}\r\n\r\n.remove-tag {\r\n  color: #992222;\r\n  margin-left: 5px;\r\n  font-size: 12px;\r\n  cursor: pointer;\r\n}\r\n"
+module.exports = ".container {\r\n  width: 500px;\r\n}\r\n\r\n.tags {\r\n  list-style: none;\r\n  padding: 0px;\r\n}\r\n\r\n.tags li {\r\n  display: inline-block;\r\n  background-color: rgb(210, 210, 210);\r\n  padding: 5px 10px;\r\n  margin-right: 10px;\r\n  margin-top: 10px;\r\n  border-radius: 15px;\r\n}\r\n\r\n.ng-valid[required], .ng-valid.required  {\r\n  border-left: 5px solid green; /* green */\r\n}\r\n\r\n.ng-invalid:not(form)  {\r\n  border-left: 5px solid #a94442; /* red */\r\n}\r\n\r\n.remove-tag {\r\n  color: grey;\r\n  margin-left: 5px;\r\n  font-size: 12px;\r\n  cursor: pointer;\r\n}\r\n"
 
 /***/ }),
 
@@ -1087,6 +1117,12 @@ var CategoryService = /** @class */ (function () {
             headers.append('Content-Type', 'application/json');
             return this.http.post(URI, category, { headers: headers });
         }
+    };
+    CategoryService.prototype.deleteCategory = function (categoryTitle) {
+        var URI = this.serverApi + "/cruddata/categories/" + categoryTitle;
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        return this.http.delete(URI, { headers: headers });
     };
     CategoryService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

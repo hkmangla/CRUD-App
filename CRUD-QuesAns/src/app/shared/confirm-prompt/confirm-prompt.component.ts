@@ -8,7 +8,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 })
 export class ConfirmPromptComponent implements OnInit {
 
-  id: number;
+  id: any;
   delete(): void {
     this.dialogRef.close({message: 'Yes', id: this.id});
   }
